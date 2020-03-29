@@ -44,11 +44,7 @@ class App extends React.Component {
     if (done.length !== this.state.progress.length) {
       return false;
     }
-    console.log(done.length);
-    console.log(this.state.progress.length);
-    console.log(done);
-    console.log(this.state.progress);
-    for (var i = 0; i < done; i++) {
+    for (var i = 0; i < done.length; i++) {
       if (done[i] !== this.state.progress[i]) {
         return false;
       }
@@ -61,8 +57,6 @@ class App extends React.Component {
     console.log(done);
     if (done === true) {
       console.log("thanks");
-    } else {
-      console.log("not thanks... yet");
     }
     return (
       <React.Fragment>
