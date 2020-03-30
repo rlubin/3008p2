@@ -3,6 +3,7 @@ import "./App.css";
 import { Grid, Header } from "semantic-ui-react";
 import Create from "./Create";
 import Test from "./Test";
+import Password from "./Password";
 
 class App extends React.Component {
   constructor(props) {
@@ -54,20 +55,24 @@ class App extends React.Component {
 
   render() {
     let done = this.checkDone();
-    console.log(done);
     if (done === true) {
       console.log("thanks");
     }
     return (
       <React.Fragment>
+        <Password></Password>
         <Header as="h1">Fire Geckos</Header>
         <Header as="h1">Password Tester</Header>
         <Header as="h2">User: {this.state.userid}</Header>
         <Header as="h3">
+          After completeing each step the next one will open up, closing access
+          to the previous steps{" "}
+        </Header>
+        <Header as="h3">
           Refreshing or closing this page will force you to restart the whole
           process
         </Header>
-        <Grid columns={2} celled={true}>
+        <Grid columns={2}>
           <Grid.Row>
             <Grid.Column>
               <Create

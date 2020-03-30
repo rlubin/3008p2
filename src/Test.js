@@ -23,7 +23,7 @@ class Test extends React.Component {
   render() {
     // console.log(this.state);
     return (
-      <Card>
+      <Card centered={true}>
         <Card.Content>
           <Card.Header>Enter password for {this.props.type}</Card.Header>
           <Modal
@@ -40,7 +40,9 @@ class Test extends React.Component {
           >
             <Modal.Header>Enter password for {this.props.type}</Modal.Header>
             <Modal.Content>
-              <Modal.Description></Modal.Description>
+              <Modal.Description>
+                Once you complete this step you won't be able to access it again
+              </Modal.Description>
               <Modal.Actions>
                 <Button onClick={this.handleClose}>Done</Button>
               </Modal.Actions>
