@@ -1,18 +1,17 @@
 import React from "react";
 import "./App.css";
-import { Grid, Header } from "semantic-ui-react";
+import { Grid, Header, Modal } from "semantic-ui-react";
 import Create from "./Create";
 import Test from "./Test";
-import Password from "./Password";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userid: this.createUserid(),
-      bankingPassword: "",
-      emailPassword: "",
-      shoppingPassword: "",
+      bankingPassword: this.createPassword(),
+      emailPassword: this.createPassword(),
+      shoppingPassword: this.createPassword(),
       progress: [false, true, true, true, true, true]
     };
   }
@@ -22,7 +21,40 @@ class App extends React.Component {
   };
 
   createPassword = () => {
-    return "password";
+    let password = "";
+    let emoji = [
+      "&#x1F600;",
+      "&#x1F601;",
+      "&#x1F602;",
+      "&#x1F61B;",
+      "&#x1F604;",
+      "&#x1F605;",
+      "&#x1F606;",
+      "&#x1F607",
+      "&#x1F608;",
+      "&#x1F609;",
+      "&#x1F60A;",
+      "&#x1F60B;",
+      "&#x1F60C;",
+      "&#x1F60D;",
+      "&#x1F60E;",
+      "&#x1F60F;",
+      "&#x1F610;",
+      "&#x1F611;",
+      "&#x1F612;",
+      "&#x1F613;",
+      "&#x1F614;",
+      "&#x1F615;",
+      "&#x1F616;",
+      "&#x1F617;",
+      "&#x1F618;"
+    ];
+    for (let i = 0; i < 5; i++) {
+      password = password.concat(
+        emoji[Math.floor(Math.random() * (emoji.length - 1))]
+      );
+    }
+    return password;
   };
 
   updateProgress = () => {
@@ -54,13 +86,9 @@ class App extends React.Component {
   };
 
   render() {
-    let done = this.checkDone();
-    if (done === true) {
-      console.log("thanks");
-    }
+    const done = this.checkDone();
     return (
       <React.Fragment>
-        <Password></Password>
         <Header as="h1">Fire Geckos</Header>
         <Header as="h1">Password Tester</Header>
         <Header as="h2">User: {this.state.userid}</Header>
@@ -128,6 +156,12 @@ class App extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <Modal trigger={done === true}>
+          <Modal.Header>You're done!</Modal.Header>
+          <Modal.Content>
+            <Modal.Description></Modal.Description>
+          </Modal.Content>
+        </Modal>
       </React.Fragment>
     );
   }
