@@ -18,7 +18,33 @@ class Test extends React.Component {
     this.state = {
       password: this.props.password,
       modalOpen: false,
-      emojis: this.shuffleEmojis(),
+      emojis: [
+        "&#x1F600;",
+        "&#x1F601;",
+        "&#x1F602;",
+        "&#x1F61B;",
+        "&#x1F604;",
+        "&#x1F605;",
+        "&#x1F606;",
+        "&#x1F607",
+        "&#x1F608;",
+        "&#x1F609;",
+        "&#x1F60A;",
+        "&#x1F60B;",
+        "&#x1F60C;",
+        "&#x1F60D;",
+        "&#x1F60E;",
+        "&#x1F60F;",
+        "&#x1F610;",
+        "&#x1F611;",
+        "&#x1F612;",
+        "&#x1F613;",
+        "&#x1F614;",
+        "&#x1F615;",
+        "&#x1F616;",
+        "&#x1F617;",
+        "&#x1F618;"
+      ],
       testPassword: "",
       correctPassword: false,
       incorrectPassword: false
@@ -135,6 +161,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[0])}
                     >
                       {parse(this.state.emojis[0])}
@@ -143,6 +170,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[1])}
                     >
                       {parse(this.state.emojis[1])}
@@ -151,6 +179,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[2])}
                     >
                       {parse(this.state.emojis[2])}
@@ -159,6 +188,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[3])}
                     >
                       {parse(this.state.emojis[3])}
@@ -167,6 +197,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[4])}
                     >
                       {parse(this.state.emojis[4])}
@@ -177,6 +208,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[5])}
                     >
                       {parse(this.state.emojis[5])}
@@ -185,6 +217,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[6])}
                     >
                       {parse(this.state.emojis[6])}
@@ -193,6 +226,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[7])}
                     >
                       {parse(this.state.emojis[7])}
@@ -201,6 +235,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[8])}
                     >
                       {parse(this.state.emojis[8])}
@@ -209,6 +244,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[9])}
                     >
                       {parse(this.state.emojis[9])}
@@ -219,6 +255,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[10])}
                     >
                       {parse(this.state.emojis[10])}
@@ -227,6 +264,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[11])}
                     >
                       {parse(this.state.emojis[11])}
@@ -235,6 +273,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[12])}
                     >
                       {parse(this.state.emojis[12])}
@@ -243,6 +282,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[13])}
                     >
                       {parse(this.state.emojis[13])}
@@ -251,6 +291,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[14])}
                     >
                       {parse(this.state.emojis[14])}
@@ -261,6 +302,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[15])}
                     >
                       {parse(this.state.emojis[15])}
@@ -269,6 +311,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[16])}
                     >
                       {parse(this.state.emojis[16])}
@@ -277,6 +320,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[17])}
                     >
                       {parse(this.state.emojis[17])}
@@ -285,6 +329,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[18])}
                     >
                       {parse(this.state.emojis[18])}
@@ -293,6 +338,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[19])}
                     >
                       {parse(this.state.emojis[19])}
@@ -303,6 +349,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[20])}
                     >
                       {parse(this.state.emojis[20])}
@@ -311,6 +358,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[21])}
                     >
                       {parse(this.state.emojis[21])}
@@ -319,6 +367,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[22])}
                     >
                       {parse(this.state.emojis[22])}
@@ -327,6 +376,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[23])}
                     >
                       {parse(this.state.emojis[23])}
@@ -335,6 +385,7 @@ class Test extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
+                      icon size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[24])}
                     >
                       {parse(this.state.emojis[24])}
