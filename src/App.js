@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Grid, Header, Modal } from "semantic-ui-react";
+import { Grid, Header } from "semantic-ui-react";
 import Create from "./Create";
 import Test from "./Test";
 
@@ -12,7 +12,9 @@ class App extends React.Component {
       bankingPassword: this.createPassword(),
       emailPassword: this.createPassword(),
       shoppingPassword: this.createPassword(),
-      progress: [false, true, true, true, true, true]
+      progress: [false, true, true, true, true, true],
+      successTimes: [],
+      failTimes: []
     };
   }
 
@@ -85,10 +87,55 @@ class App extends React.Component {
     return true;
   };
 
+  log = () => {
+    let sTimes = "[]";
+    if (this.state.successTimes.length > 0) {
+      sTimes = this.state.successTimes.join(".");
+      sTimes = "[" + sTimes + "]";
+    }
+    let fTimes = "[]";
+    if (this.state.failTimes.length > 0) {
+      fTimes = this.state.failTimes.join(".");
+      fTimes = "[" + fTimes + "]";
+    }
+    let data = {
+      userid: this.state.userid,
+      successTimes: sTimes,
+      failTimes: fTimes
+    };
+    // console.log("sent:\nhttp://localhost:8080/log\n");
+    console.log("data:\n", data);
+    console.log(typeof data);
+    //send post message with userid, sTimes, fTimes
+    fetch("http://localhost:8080/log", {
+      method: "POST",
+      mode: "no-cors",
+      body: data
+    }).then(res => {
+      console.log(res);
+    });
+  };
+
+  updateSuccessTimes = time => {
+    let newSuccessTimes = [...this.state.successTimes, time];
+    this.setState({ successTimes: newSuccessTimes });
+  };
+
+  updateFailTimes = (time, last) => {
+    let newFailTimes = [...this.state.failTimes, time];
+    this.setState({ failTimes: newFailTimes });
+  };
+
   render() {
     const done = this.checkDone();
+    if (done === true) {
+      this.log();
+    }
     return (
       <React.Fragment>
+        {done
+          ? alert("You're done!\nThank you for participating in our project.")
+          : ""}
         <Header as="h1">Fire Geckos</Header>
         <Header as="h1">Password Tester</Header>
         <Header as="h2">User: {this.state.userid}</Header>
@@ -107,16 +154,19 @@ class App extends React.Component {
                 type={"Banking"}
                 disabled={this.state.progress[0]}
                 password={this.state.bankingPassword}
-                update={this.updateProgress}
+                updateProgress={this.updateProgress}
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Test
+              <Create
                 type={"Banking"}
                 disabled={this.state.progress[3]}
                 password={this.state.bankingPassword}
-                update={this.updateProgress}
-              ></Test>
+                updateProgress={this.updateProgress}
+                updateSuccessTimes={this.updateSuccessTimes}
+                updateFailTimes={this.updateFailTimes}
+                last={false}
+              ></Create>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -125,16 +175,19 @@ class App extends React.Component {
                 type={"Email"}
                 disabled={this.state.progress[1]}
                 password={this.state.emailPassword}
-                update={this.updateProgress}
+                updateProgress={this.updateProgress}
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Test
+              <Create
                 type={"Email"}
                 disabled={this.state.progress[4]}
                 password={this.state.emailPassword}
-                update={this.updateProgress}
-              ></Test>
+                updateProgress={this.updateProgress}
+                updateSuccessTimes={this.updateSuccessTimes}
+                updateFailTimes={this.updateFailTimes}
+                last={false}
+              ></Create>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -143,25 +196,22 @@ class App extends React.Component {
                 type={"Shopping"}
                 disabled={this.state.progress[2]}
                 password={this.state.shoppingPassword}
-                update={this.updateProgress}
+                updateProgress={this.updateProgress}
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Test
+              <Create
                 type={"Shopping"}
                 disabled={this.state.progress[5]}
                 password={this.state.shoppingPassword}
-                update={this.updateProgress}
-              ></Test>
+                updateProgress={this.updateProgress}
+                updateSuccessTimes={this.updateSuccessTimes}
+                updateFailTimes={this.updateFailTimes}
+                last={true}
+              ></Create>
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <Modal trigger={done === true}>
-          <Modal.Header>You're done!</Modal.Header>
-          <Modal.Content>
-            <Modal.Description></Modal.Description>
-          </Modal.Content>
-        </Modal>
       </React.Fragment>
     );
   }
