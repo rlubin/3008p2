@@ -98,30 +98,22 @@ class Create extends React.Component {
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
+
+    //for testing remove after
+    //////////////////////////////////////////////////////////////////
+    if (this.props.updateSuccessTimes !== undefined) {
+      this.props.updateSuccessTimes(1);
+    }
+    if (this.props.updateFailTimes !== undefined) {
+      this.props.updateFailTimes(2);
+    }
+    //////////////////////////////////////////////////////////////////
   };
 
   handleClose = () => {
     this.setState({ modalOpen: false });
     this.props.updateProgress();
-    // this is for testing TEST.JS functions  DOWN
-    if (this.props.updateSuccessTimes !== undefined) {
-      this.props.updateSuccessTimes(1);
-    }
-    if (this.props.updateFailTimes !== undefined) {
-      this.props.updateFailTimes(2, this.props.last);
-    }
-    // this is for testing TEST.JS functions  UP
   };
-
-  // ADD TO TEST.JS and remove fro CREATE.JS  DOWN
-  updateSuccessTimes = num => {
-    this.props.updateSuccessTimes(num);
-  };
-
-  updateFailTimes = num => {
-    this.props.updateFailTimes(num, this.props.last);
-  };
-  // ADD TO TEST.JS and remove fro CREATE.JS  UP
 
   practicePassword = () => {
     if (this.state.password === this.state.testPassword) {
@@ -161,12 +153,6 @@ class Create extends React.Component {
           >
             <Modal.Header>Create password for {this.props.type}</Modal.Header>
             <Modal.Content>
-              <Modal.Description>
-                <Header as="h4">
-                  Once you complete this step you won't be able to access it
-                  again
-                </Header>
-              </Modal.Description>
               <Modal.Description>
                 <Header as="h4">
                   You password is:{" "}
@@ -459,6 +445,12 @@ class Create extends React.Component {
                 >
                   <Message color="red">Incorrect Password</Message>
                 </Transition>
+                <Modal.Description>
+                  <Header as="h4">
+                    Clicking the "Done" button will close this popup and you
+                    won't be able to access it again
+                  </Header>
+                </Modal.Description>
                 <Button onClick={this.handleClose}>Done</Button>
               </Modal.Actions>
             </Modal.Content>

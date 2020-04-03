@@ -105,12 +105,12 @@ class App extends React.Component {
     };
     // console.log("sent:\nhttp://localhost:8080/log\n");
     console.log("data:\n", data);
-    console.log(typeof data);
+    // console.log(typeof data);
     //send post message with userid, sTimes, fTimes
     fetch("http://localhost:8080/log", {
       method: "POST",
       mode: "no-cors",
-      body: data
+      body: JSON.stringify(data)
     }).then(res => {
       console.log(res);
     });
@@ -121,7 +121,7 @@ class App extends React.Component {
     this.setState({ successTimes: newSuccessTimes });
   };
 
-  updateFailTimes = (time, last) => {
+  updateFailTimes = time => {
     let newFailTimes = [...this.state.failTimes, time];
     this.setState({ failTimes: newFailTimes });
   };
@@ -158,14 +158,13 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Create
+              <Create /////////////////////////////////////////TEST
                 type={"Banking"}
                 disabled={this.state.progress[3]}
                 password={this.state.bankingPassword}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
-                last={false}
               ></Create>
             </Grid.Column>
           </Grid.Row>
@@ -179,14 +178,13 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Create
+              <Create /////////////////////////////////////////TEST
                 type={"Email"}
                 disabled={this.state.progress[4]}
                 password={this.state.emailPassword}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
-                last={false}
               ></Create>
             </Grid.Column>
           </Grid.Row>
@@ -200,14 +198,13 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Create
+              <Create /////////////////////////////////////////TEST
                 type={"Shopping"}
                 disabled={this.state.progress[5]}
                 password={this.state.shoppingPassword}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
-                last={true}
               ></Create>
             </Grid.Column>
           </Grid.Row>

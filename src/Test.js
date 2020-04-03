@@ -130,6 +130,14 @@ class Test extends React.Component {
     this.setState({ testPassword: this.state.testPassword.concat(input) });
   };
 
+  updateSuccessTimes = num => {
+    this.props.updateSuccessTimes(num);
+  };
+
+  updateFailTimes = num => {
+    this.props.updateFailTimes(num);
+  };
+
   render() {
     // console.log(this.state);
     return (
@@ -152,8 +160,8 @@ class Test extends React.Component {
             <Modal.Content>
               <Modal.Description>
                 <Header as="h4">
-                  Once you complete this step you won't be able to access it
-                  again
+                  Clicking the "Done" button will close this popup and you won't
+                  be able to access it again
                 </Header>
               </Modal.Description>
               <Grid>
@@ -420,6 +428,12 @@ class Test extends React.Component {
               </Grid>
               <Modal.Actions>
                 <Divider hidden />
+                <Modal.Description>
+                  <Header as="h4">
+                    Clicking the "Done" button will close this popup and you
+                    won't be able to access it again
+                  </Header>
+                </Modal.Description>
                 <Button onClick={this.handleClose}>Done</Button>
                 <Divider hidden />
                 <Transition

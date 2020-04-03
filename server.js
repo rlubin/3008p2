@@ -4,24 +4,21 @@ const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const port = 8080;
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(bodyParser.raw());
-
 let i = 0;
+
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.post("/log", function(req, res) {
+app.post("/log", (req, res) => {
   i = i + 1;
-  console.log(`post rec ${i}`);
+  console.log(`post ${i}`);
   console.log(req.body);
-  res.status(200).send(req.body);
+  res.status(200).send(JSON.stringify(req.body));
   // let user = "";
   // let scheme = "emoji";
   // let successes = a.length;
