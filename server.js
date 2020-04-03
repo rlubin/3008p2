@@ -18,6 +18,9 @@ app.post("/log", (req, res) => {
   i = i + 1;
   console.log(`post ${i}`);
   console.log(req.body);
+  // console.log(req.body.userid);
+  // console.log(req.body.successTimes);
+  // console.log(req.body.failTimes);
   res.status(200).send(JSON.stringify(req.body));
   let sTimes = "[]";
   if (req.body.successTimes.length > 0) {
@@ -43,7 +46,7 @@ app.post("/log", (req, res) => {
     `${user},${scheme},${logins},${successes},${fails},${successTimes},${failTimes}\r`,
     err => {
       if (err) throw err;
-      console.log('The "data to append" was appended to file!');
+      console.log("data appended to log.csv");
     }
   );
 });

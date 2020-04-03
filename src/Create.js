@@ -53,16 +53,6 @@ class Create extends React.Component {
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
-
-    //for testing remove after
-    //////////////////////////////////////////////////////////////////
-    if (this.props.updateSuccessTimes !== undefined) {
-      this.props.updateSuccessTimes(1);
-    }
-    if (this.props.updateFailTimes !== undefined) {
-      this.props.updateFailTimes(2);
-    }
-    //////////////////////////////////////////////////////////////////
   };
 
   handleClose = () => {
@@ -119,7 +109,8 @@ class Create extends React.Component {
                 click test to see if what you entered is correct.
               </Header>
               <Header as="h4">
-                You entered: <Header as="h1">{parse(this.state.testPassword)}</Header>
+                You entered:{" "}
+                <Header as="h1">{parse(this.state.testPassword)}</Header>
               </Header>
               <Divider hidden />
               <Grid>
