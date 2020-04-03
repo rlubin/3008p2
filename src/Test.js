@@ -50,12 +50,18 @@ class Test extends React.Component {
       attempt: 1,
       incorrectPassword: false,
       pass: false,
-      fail: false
+      fail: false,
+      startTime : "",
+      endTime : ""
     };
   }
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
+    this.setState({startTime: Date.now()});
+    console.log(Date.now())
+    console.log(this.state.startTime)
+    console.log(((Date.now() - this.state.startTime)/1000).toFixed(0))
   };
 
   handleClose = () => {
@@ -64,6 +70,7 @@ class Test extends React.Component {
       if (this.state.incorrectPassword === true)
         this.setState({ incorrectPassword: false });
       this.setState({ pass: true });
+      this.updateSuccessTimes(((Date.now() - this.state.startTime)/1000).toFixed(0))
       this.setState({ modalOpen: false });
       this.props.update();
     } else if (
@@ -73,11 +80,14 @@ class Test extends React.Component {
       if (this.state.incorrectPassword === true)
         this.setState({ incorrectPassword: false });
       this.setState({ fail: true });
+      this.updateFailTimes(((Date.now() - this.state.startTime)/1000).toFixed(0))
       this.setState({ modalOpen: false });
       this.props.updateProgress();
     } else {
       this.setState({ incorrectPassword: true });
       this.setState({ testPassword: "" });
+      this.updateFailTimes(((Date.now() - this.state.startTime)/1000).toFixed(0))
+      this.setState({startTime: Date.now()});
     }
   };
 
