@@ -59,14 +59,17 @@ class Test extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({ attempt: this.state.attempt+1 });
+    this.setState({ attempt: this.state.attempt + 1 });
     if (this.state.password === this.state.testPassword) {
       if (this.state.incorrectPassword === true)
         this.setState({ incorrectPassword: false });
       this.setState({ pass: true });
       this.setState({ modalOpen: false });
       this.props.update();
-    } else if (this.state.password !== this.state.testPassword && this.state.attempt===3) {
+    } else if (
+      this.state.password !== this.state.testPassword &&
+      this.state.attempt === 3
+    ) {
       if (this.state.incorrectPassword === true)
         this.setState({ incorrectPassword: false });
       this.setState({ fail: true });
@@ -118,7 +121,8 @@ class Test extends React.Component {
               </Modal.Description>
               <Modal.Description>
                 <Header as="h4">
-                  You entered: <Header as="h1">{parse(this.state.testPassword)}</Header>
+                  You entered:{" "}
+                  <Header as="h1">{parse(this.state.testPassword)}</Header>
                 </Header>
               </Modal.Description>
               <Divider hidden />
@@ -404,8 +408,8 @@ class Test extends React.Component {
               </Modal.Actions>
             </Modal.Content>
           </Modal>
-            { this.state.fail ? <Message color='red'>Fail</Message> : null }
-           { this.state.pass ? <Message color='green'>Pass</Message> : null}
+          {this.state.fail ? <Message color="red">Fail</Message> : null}
+          {this.state.pass ? <Message color="green">Pass</Message> : null}
         </Card.Content>
       </Card>
     );
