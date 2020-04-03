@@ -51,51 +51,6 @@ class Create extends React.Component {
     };
   }
 
-  shuffleEmojis = () => {
-    let emoji = [
-      "&#x1F600;",
-      "&#x1F601;",
-      "&#x1F602;",
-      "&#x1F61B;",
-      "&#x1F604;",
-      "&#x1F605;",
-      "&#x1F606;",
-      "&#x1F607",
-      "&#x1F608;",
-      "&#x1F609;",
-      "&#x1F60A;",
-      "&#x1F60B;",
-      "&#x1F60C;",
-      "&#x1F60D;",
-      "&#x1F60E;",
-      "&#x1F60F;",
-      "&#x1F610;",
-      "&#x1F611;",
-      "&#x1F612;",
-      "&#x1F613;",
-      "&#x1F614;",
-      "&#x1F615;",
-      "&#x1F616;",
-      "&#x1F617;",
-      "&#x1F618;"
-    ];
-    let counter = emoji.length;
-    // While there are elements in the array
-    while (counter > 0) {
-      // Pick a random index
-      let index = Math.floor(Math.random() * counter);
-
-      // Decrease counter by 1
-      counter--;
-
-      // And swap the last element with it
-      let temp = emoji[counter];
-      emoji[counter] = emoji[index];
-      emoji[index] = temp;
-    }
-    return emoji;
-  };
-
   handleOpen = () => {
     this.setState({ modalOpen: true });
 
@@ -161,10 +116,12 @@ class Create extends React.Component {
               </Modal.Description>
               <Header as="h4">
                 Intructions: Click the icons below in the order shown above and
-                click test to see if what you entered is correct. Remember the
-                grid is randomized so remember the emoji rather than the
-                position.
+                click test to see if what you entered is correct.
               </Header>
+              <Header as="h4">
+                You entered: <Header as="h1">{parse(this.state.testPassword)}</Header>
+              </Header>
+              <Divider hidden />
               <Grid>
                 <Grid.Row>
                   <Grid.Column>
