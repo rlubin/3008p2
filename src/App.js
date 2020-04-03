@@ -131,12 +131,11 @@ class App extends React.Component {
     const done = this.checkDone();
     if (done === true) {
       this.log();
+      alert("You're done!\nThank you for participating in our project.")
     }
     return (
       <React.Fragment>
-        {done
-          ? alert("You're done!\nThank you for participating in our project.")
-          : ""}
+        
         <Header as="h1">Fire Geckos</Header>
         <Header as="h1">Password Tester</Header>
         <Header as="h2">User: {this.state.userid}</Header>
@@ -159,14 +158,14 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Create /////////////////////////////////////////TEST
+              <Test /////////////////////////////////////////TEST
                 type={"Banking"}
                 disabled={this.state.progress[3]}
                 password={this.state.bankingPassword}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
-              ></Create>
+              ></Test>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -179,14 +178,14 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Create /////////////////////////////////////////TEST
+              <Test /////////////////////////////////////////TEST
                 type={"Email"}
                 disabled={this.state.progress[4]}
                 password={this.state.emailPassword}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
-              ></Create>
+              ></Test>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -199,14 +198,14 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Create /////////////////////////////////////////TEST
+              <Test /////////////////////////////////////////TEST
                 type={"Shopping"}
                 disabled={this.state.progress[5]}
                 password={this.state.shoppingPassword}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
-              ></Create>
+              ></Test>
             </Grid.Column>
           </Grid.Row>
         </Grid>

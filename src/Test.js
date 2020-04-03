@@ -71,7 +71,7 @@ class Test extends React.Component {
         this.setState({ incorrectPassword: false });
       this.setState({ fail: true });
       this.setState({ modalOpen: false });
-      this.props.update();
+      this.props.updateProgress();
     } else {
       this.setState({ incorrectPassword: true });
       this.setState({ testPassword: "" });
