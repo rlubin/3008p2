@@ -9,7 +9,8 @@ import {
   Grid,
   Message,
   Divider,
-  Transition
+  Transition,
+  Visibility
 } from "semantic-ui-react";
 
 class Test extends React.Component {
@@ -46,81 +47,32 @@ class Test extends React.Component {
         "&#x1F618;"
       ],
       testPassword: "",
-      correctPassword: false,
-      incorrectPassword: false
+      attempt: 1,
+      incorrectPassword: false,
+      pass: false,
+      fail: false
     };
   }
-
-  shuffleEmojis = () => {
-    let emoji = [
-      "&#x1F600;",
-      "&#x1F601;",
-      "&#x1F602;",
-      "&#x1F61B;",
-      "&#x1F604;",
-      "&#x1F605;",
-      "&#x1F606;",
-      "&#x1F607",
-      "&#x1F608;",
-      "&#x1F609;",
-      "&#x1F60A;",
-      "&#x1F60B;",
-      "&#x1F60C;",
-      "&#x1F60D;",
-      "&#x1F60E;",
-      "&#x1F60F;",
-      "&#x1F610;",
-      "&#x1F611;",
-      "&#x1F612;",
-      "&#x1F613;",
-      "&#x1F614;",
-      "&#x1F615;",
-      "&#x1F616;",
-      "&#x1F617;",
-      "&#x1F618;"
-    ];
-    let counter = emoji.length;
-    // While there are elements in the array
-    while (counter > 0) {
-      // Pick a random index
-      let index = Math.floor(Math.random() * counter);
-
-      // Decrease counter by 1
-      counter--;
-
-      // And swap the last element with it
-      let temp = emoji[counter];
-      emoji[counter] = emoji[index];
-      emoji[index] = temp;
-    }
-    return emoji;
-  };
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
   };
 
   handleClose = () => {
+    this.setState({ attempt: this.state.attempt+1 });
     if (this.state.password === this.state.testPassword) {
       if (this.state.incorrectPassword === true)
         this.setState({ incorrectPassword: false });
+      this.setState({ pass: true });
+      this.setState({ modalOpen: false });
+      this.props.update();
+    } else if (this.state.password !== this.state.testPassword && this.state.attempt===3) {
+      if (this.state.incorrectPassword === true)
+        this.setState({ incorrectPassword: false });
+      this.setState({ fail: true });
       this.setState({ modalOpen: false });
       this.props.update();
     } else {
-      this.setState({ incorrectPassword: true });
-      this.setState({ testPassword: "" });
-    }
-  };
-
-  practicePassword = () => {
-    if (this.state.password === this.state.testPassword) {
-      if (this.state.incorrectPassword === true)
-        this.setState({ incorrectPassword: false });
-      this.setState({ correctPassword: true });
-      this.setState({ testPassword: "" });
-    } else {
-      if (this.state.correctPassword === true)
-        this.setState({ correctPassword: false });
       this.setState({ incorrectPassword: true });
       this.setState({ testPassword: "" });
     }
@@ -156,6 +108,12 @@ class Test extends React.Component {
                   again
                 </Header>
               </Modal.Description>
+              <Modal.Description>
+                <Header as="h4">
+                  You entered: <Header as="h1">{parse(this.state.testPassword)}</Header>
+                </Header>
+              </Modal.Description>
+              <Divider hidden />
               <Grid>
                 <Grid.Row>
                   <Grid.Column>
@@ -407,6 +365,8 @@ class Test extends React.Component {
               </Modal.Actions>
             </Modal.Content>
           </Modal>
+            { this.state.fail ? <Message color='red'>Fail</Message> : null }
+           { this.state.pass ? <Message color='green'>Pass</Message> : null}
         </Card.Content>
       </Card>
     );
