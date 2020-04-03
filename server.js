@@ -36,6 +36,6 @@ app.post("/log", (req, res) => {
   // );
 });
 
-app.listen(process.env.PORT || port, function(req, res) {
+app.listen(process.env.PORT || port, (req, res) => {
   console.log(`http://localhost:${port}`);
 });

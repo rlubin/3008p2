@@ -110,6 +110,7 @@ class App extends React.Component {
     fetch("http://localhost:8080/log", {
       method: "POST",
       mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     }).then(res => {
       console.log(res);
