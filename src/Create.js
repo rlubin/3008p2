@@ -53,11 +53,21 @@ class Create extends React.Component {
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
+
+    //for testing remove after
+    //////////////////////////////////////////////////////////////////
+    if (this.props.updateSuccessTimes !== undefined) {
+      this.props.updateSuccessTimes(1);
+    }
+    if (this.props.updateFailTimes !== undefined) {
+      this.props.updateFailTimes(2);
+    }
+    //////////////////////////////////////////////////////////////////
   };
 
   handleClose = () => {
     this.setState({ modalOpen: false });
-    this.props.update();
+    this.props.updateProgress();
   };
 
   practicePassword = () => {
@@ -100,13 +110,8 @@ class Create extends React.Component {
             <Modal.Content>
               <Modal.Description>
                 <Header as="h4">
-                  Once you complete this step you won't be able to access it
-                  again
-                </Header>
-              </Modal.Description>
-              <Modal.Description>
-                <Header as="h4">
-                  You password is: <Header as="h1">{parse(this.state.password)}</Header>
+                  You password is:{" "}
+                  <Header as="h1">{parse(this.state.password)}</Header>
                 </Header>
               </Modal.Description>
               <Header as="h4">
@@ -122,7 +127,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[0])}
                     >
                       {parse(this.state.emojis[0])}
@@ -131,7 +137,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[1])}
                     >
                       {parse(this.state.emojis[1])}
@@ -140,7 +147,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[2])}
                     >
                       {parse(this.state.emojis[2])}
@@ -149,7 +157,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[3])}
                     >
                       {parse(this.state.emojis[3])}
@@ -158,7 +167,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[4])}
                     >
                       {parse(this.state.emojis[4])}
@@ -169,7 +179,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[5])}
                     >
                       {parse(this.state.emojis[5])}
@@ -178,7 +189,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[6])}
                     >
                       {parse(this.state.emojis[6])}
@@ -187,7 +199,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[7])}
                     >
                       {parse(this.state.emojis[7])}
@@ -196,7 +209,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[8])}
                     >
                       {parse(this.state.emojis[8])}
@@ -205,7 +219,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[9])}
                     >
                       {parse(this.state.emojis[9])}
@@ -216,7 +231,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[10])}
                     >
                       {parse(this.state.emojis[10])}
@@ -225,7 +241,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[11])}
                     >
                       {parse(this.state.emojis[11])}
@@ -234,7 +251,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[12])}
                     >
                       {parse(this.state.emojis[12])}
@@ -243,7 +261,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[13])}
                     >
                       {parse(this.state.emojis[13])}
@@ -252,7 +271,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[14])}
                     >
                       {parse(this.state.emojis[14])}
@@ -263,7 +283,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[15])}
                     >
                       {parse(this.state.emojis[15])}
@@ -272,7 +293,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[16])}
                     >
                       {parse(this.state.emojis[16])}
@@ -281,7 +303,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[17])}
                     >
                       {parse(this.state.emojis[17])}
@@ -290,7 +313,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[18])}
                     >
                       {parse(this.state.emojis[18])}
@@ -299,7 +323,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[19])}
                     >
                       {parse(this.state.emojis[19])}
@@ -310,7 +335,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[20])}
                     >
                       {parse(this.state.emojis[20])}
@@ -319,7 +345,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[21])}
                     >
                       {parse(this.state.emojis[21])}
@@ -328,7 +355,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[22])}
                     >
                       {parse(this.state.emojis[22])}
@@ -337,7 +365,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[23])}
                     >
                       {parse(this.state.emojis[23])}
@@ -346,7 +375,8 @@ class Create extends React.Component {
                   <Grid.Column>
                     <Button
                       icon
-                      icon size="massive"
+                      icon
+                      size="massive"
                       onClick={() => this.inputPassword(this.state.emojis[24])}
                     >
                       {parse(this.state.emojis[24])}
@@ -372,6 +402,12 @@ class Create extends React.Component {
                 >
                   <Message color="red">Incorrect Password</Message>
                 </Transition>
+                <Modal.Description>
+                  <Header as="h4">
+                    Clicking the "Done" button will close this popup and you
+                    won't be able to access it again
+                  </Header>
+                </Modal.Description>
                 <Button onClick={this.handleClose}>Done</Button>
               </Modal.Actions>
             </Modal.Content>
