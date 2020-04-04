@@ -88,28 +88,15 @@ class App extends React.Component {
   };
 
   log = () => {
-    let sTimes = "[]";
-    if (this.state.successTimes.length > 0) {
-      sTimes = this.state.successTimes.join(".");
-      sTimes = "[" + sTimes + "]";
-    }
-    let fTimes = "[]";
-    if (this.state.failTimes.length > 0) {
-      fTimes = this.state.failTimes.join(".");
-      fTimes = "[" + fTimes + "]";
-    }
     let data = {
       userid: this.state.userid,
-      successTimes: sTimes,
-      failTimes: fTimes
+      successTimes: this.state.successTimes,
+      failTimes: this.state.failTimes
     };
-    // console.log("sent:\nhttp://localhost:8080/log\n");
     console.log("data:\n", data);
-    // console.log(typeof data);
-    //send post message with userid, sTimes, fTimes
     fetch("http://localhost:8080/log", {
       method: "POST",
-      mode: "no-cors",
+      mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     }).then(res => {
@@ -131,11 +118,10 @@ class App extends React.Component {
     const done = this.checkDone();
     if (done === true) {
       this.log();
-      alert("You're done!\nThank you for participating in our project.")
+      alert("You're done!\nThank you for participating in our project.");
     }
     return (
       <React.Fragment>
-
         <Header as="h1">Fire Geckos</Header>
         <Header as="h1">Password Tester</Header>
         <Header as="h2">User: {this.state.userid}</Header>

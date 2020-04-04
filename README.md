@@ -1,14 +1,13 @@
 react server @ localhost:3000
 logging server @ localhost:8080
 
-must have logging server running to append to log.csv
+logging only works when using prod setup
 
 setup:
 npm i
 
 dev(use react server):
 npm start
-node server.js
 
 prod(use logging server):
 npm run build
