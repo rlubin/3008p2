@@ -22,28 +22,28 @@ class Test extends React.Component {
       emojis: [
         "&#x1F600;",
         "&#x1F601;",
-        "&#x1F602;",
+        "&#x1F912;",
         "&#x1F61B;",
-        "&#x1F604;",
-        "&#x1F605;",
+        "&#x1F920;",
+        "&#x1F9D0;",
         "&#x1F606;",
         "&#x1F607",
         "&#x1F608;",
         "&#x1F609;",
         "&#x1F60A;",
-        "&#x1F60B;",
-        "&#x1F60C;",
+        "&#x1F92F;",
+        "&#x1F913;",
         "&#x1F60D;",
         "&#x1F60E;",
         "&#x1F60F;",
         "&#x1F610;",
-        "&#x1F611;",
+        "&#x1F631;",
         "&#x1F612;",
         "&#x1F613;",
-        "&#x1F614;",
+        "&#x1F922;",
         "&#x1F615;",
         "&#x1F616;",
-        "&#x1F617;",
+        "&#x1F911;",
         "&#x1F618;"
       ],
       testPassword: "",
@@ -122,10 +122,18 @@ class Test extends React.Component {
             <Modal.Content>
               <Modal.Description>
                 <Header as="h4">
-                  Clicking the "Done" button will close this popup and you won't
-                  be able to access it again
+                  Intructions: Click the icons below in the order shown above. Click
+                  "Done" to submit you password. You have 3 trys
+                  to enter the correct pass word
                 </Header>
               </Modal.Description>
+              <Divider hidden />
+              <Modal.Description>
+                <Header as="h4">
+                  Attempt: <Header as="h1">{this.state.attempt}</Header>
+                </Header>
+              </Modal.Description>
+              <Divider hidden />
               <Modal.Description>
                 <Header as="h4">
                   You entered: <Header as="h1">{parse(this.state.testPassword)}</Header>
@@ -396,12 +404,6 @@ class Test extends React.Component {
               </Grid>
               <Modal.Actions>
                 <Divider hidden />
-                <Modal.Description>
-                  <Header as="h4">
-                    Clicking the "Done" button will close this popup and you
-                    won't be able to access it again
-                  </Header>
-                </Modal.Description>
                 <Button onClick={this.handleClose}>Done</Button>
                 <Divider hidden />
                 <Transition
@@ -414,8 +416,8 @@ class Test extends React.Component {
               </Modal.Actions>
             </Modal.Content>
           </Modal>
-            { this.state.fail ? <Message color='red'>Fail</Message> : null }
-           { this.state.pass ? <Message color='green'>Pass</Message> : null}
+          { this.state.fail ? <Message color='red'>Fail</Message> : null }
+          { this.state.pass ? <Message color='green'>Pass</Message> : null}
         </Card.Content>
       </Card>
     );

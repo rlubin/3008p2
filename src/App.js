@@ -27,28 +27,28 @@ class App extends React.Component {
     let emoji = [
       "&#x1F600;",
       "&#x1F601;",
-      "&#x1F602;",
+      "&#x1F912;",
       "&#x1F61B;",
-      "&#x1F604;",
-      "&#x1F605;",
+      "&#x1F920;",
+      "&#x1F9D0;",
       "&#x1F606;",
       "&#x1F607",
       "&#x1F608;",
       "&#x1F609;",
       "&#x1F60A;",
-      "&#x1F60B;",
-      "&#x1F60C;",
+      "&#x1F92F;",
+      "&#x1F913;",
       "&#x1F60D;",
       "&#x1F60E;",
       "&#x1F60F;",
       "&#x1F610;",
-      "&#x1F611;",
+      "&#x1F631;",
       "&#x1F612;",
       "&#x1F613;",
-      "&#x1F614;",
+      "&#x1F922;",
       "&#x1F615;",
       "&#x1F616;",
-      "&#x1F617;",
+      "&#x1F911;",
       "&#x1F618;"
     ];
     for (let i = 0; i < 5; i++) {
@@ -135,7 +135,7 @@ class App extends React.Component {
     }
     return (
       <React.Fragment>
-        
+
         <Header as="h1">Fire Geckos</Header>
         <Header as="h1">Password Tester</Header>
         <Header as="h2">User: {this.state.userid}</Header>
