@@ -9,17 +9,27 @@ class App extends React.Component {
     super(props);
     this.state = {
       userid: this.createUserid(),
-      bankingPassword: this.createPassword(),
-      emailPassword: this.createPassword(),
-      shoppingPassword: this.createPassword(),
+      passwords:[["Banking",this.createPassword()],["Email",this.createPassword()],["Shopping",this.createPassword()]],
+      order: this.shuffleOrder(),
       progress: [false, true, true, true, true, true],
       successTimes: [],
       failTimes: []
     };
   }
 
+
+
   createUserid = () => {
     return "fgu" + (Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000);
+  };
+
+  shuffleOrder = () => {
+    let order = [0, 1, 2]
+    for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+    }
+    return order;
   };
 
   createPassword = () => {
@@ -137,17 +147,17 @@ class App extends React.Component {
           <Grid.Row>
             <Grid.Column>
               <Create
-                type={"Banking"}
+                type={this.state.passwords[0][0]}
                 disabled={this.state.progress[0]}
-                password={this.state.bankingPassword}
+                password={this.state.passwords[0][1]}
                 updateProgress={this.updateProgress}
               ></Create>
             </Grid.Column>
             <Grid.Column>
               <Test /////////////////////////////////////////TEST
-                type={"Banking"}
+                type={this.state.passwords[this.state.order[0]][0]}
                 disabled={this.state.progress[3]}
-                password={this.state.bankingPassword}
+                password={this.state.passwords[this.state.order[0]][1]}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
@@ -157,17 +167,17 @@ class App extends React.Component {
           <Grid.Row>
             <Grid.Column>
               <Create
-                type={"Email"}
+                type={this.state.passwords[1][0]}
                 disabled={this.state.progress[1]}
-                password={this.state.emailPassword}
+                password={this.state.passwords[1][1]}
                 updateProgress={this.updateProgress}
               ></Create>
             </Grid.Column>
             <Grid.Column>
               <Test /////////////////////////////////////////TEST
-                type={"Email"}
+                type={this.state.passwords[this.state.order[1]][0]}
                 disabled={this.state.progress[4]}
-                password={this.state.emailPassword}
+                password={this.state.passwords[this.state.order[1]][1]}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
@@ -177,17 +187,17 @@ class App extends React.Component {
           <Grid.Row>
             <Grid.Column>
               <Create
-                type={"Shopping"}
+                type={this.state.passwords[2][0]}
                 disabled={this.state.progress[2]}
-                password={this.state.shoppingPassword}
+                password={this.state.passwords[2][1]}
                 updateProgress={this.updateProgress}
               ></Create>
             </Grid.Column>
             <Grid.Column>
               <Test /////////////////////////////////////////TEST
-                type={"Shopping"}
+                type={this.state.passwords[this.state.order[2]][0]}
                 disabled={this.state.progress[5]}
-                password={this.state.shoppingPassword}
+                password={this.state.passwords[this.state.order[2]][1]}
                 updateProgress={this.updateProgress}
                 updateSuccessTimes={this.updateSuccessTimes}
                 updateFailTimes={this.updateFailTimes}
