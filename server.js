@@ -1,10 +1,18 @@
+/**
+ * server that serves the build version of our react app
+ * logs information from website password scheme into log.csv
+ */
+
 const express = require("express");
 const path = require("path");
 const app = express();
 const fs = require("fs");
 const bodyParser = require("body-parser");
-const port = 8080;
+const port = 8000;
+const cors = require("cors");
 let i = 0;
+
+app.use("*", cors());
 
 app.use(bodyParser.json());
 
@@ -18,9 +26,6 @@ app.post("/log", (req, res) => {
   i = i + 1;
   console.log(`post ${i}`);
   console.log(req.body);
-  // console.log(req.body.userid);
-  // console.log(req.body.successTimes);
-  // console.log(req.body.failTimes);
   res.status(200).send(JSON.stringify(req.body));
   let sTimes = "[]";
   if (req.body.successTimes.length > 0) {
@@ -43,14 +48,20 @@ app.post("/log", (req, res) => {
   let failTimes = fTimes;
   fs.appendFile(
     "log.csv",
-    `${user},${scheme},${logins},${successes},${fails},${successTimes},${failTimes}\r`,
-    err => {
+    `${user},${scheme},${logins},${successes},${fails},${successTimes},${failTimes}\n`,
+    (err) => {
       if (err) throw err;
-      console.log("data appended to log.csv");
+      console.log(
+        `${user},${scheme},${logins},${successes},${fails},${successTimes},${failTimes}`
+      );
+      console.log("appended to log.csv");
     }
   );
 });
 
-app.listen(process.env.PORT || port, (req, res) => {
-  console.log(`http://localhost:${port}`);
+app.listen(port, (req, res) => {
+  console.log(
+    `visit website @ https://comp3008-w20.scs.carleton.ca/comp3008_47/`
+  );
+  // console.log(`visit website @ localhost:8000`);
 });

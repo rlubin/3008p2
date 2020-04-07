@@ -1,3 +1,10 @@
+/**
+ * this creates an box with a button that when clicked opens a modal
+ * the modal displays the password scheme and requires a participant to input the password to move forward
+ * this file contains logic for password verification, number of attempts, show/hide password entered
+ * this file can also update the state of App.js to keep all relevant testing information (attempt time, pass/fail)
+ */
+
 import React from "react";
 import parse from "html-react-parser";
 import "./App.css";
@@ -10,7 +17,6 @@ import {
   Message,
   Divider,
   Transition,
-  Visibility
 } from "semantic-ui-react";
 
 class Test extends React.Component {
@@ -44,7 +50,7 @@ class Test extends React.Component {
         "&#x1F615;",
         "&#x1F616;",
         "&#x1F911;",
-        "&#x1F618;"
+        "&#x1F618;",
       ],
       testPassword: "",
       attempt: 1,
@@ -54,16 +60,13 @@ class Test extends React.Component {
       startTime: "",
       endTime: "",
       visible: false,
-      hidePassword: ""
+      hidePassword: "",
     };
   }
 
   handleOpen = () => {
     this.setState({ modalOpen: true });
     this.setState({ startTime: Date.now() });
-    // console.log(Date.now());
-    // console.log(this.state.startTime);
-    // console.log(((Date.now() - this.state.startTime) / 1000).toFixed(0));
   };
 
   handleClose = () => {
@@ -100,25 +103,24 @@ class Test extends React.Component {
     }
   };
 
-  inputPassword = input => {
+  inputPassword = (input) => {
     this.setState({ testPassword: this.state.testPassword.concat(input) });
     this.setState({ hidePassword: this.state.hidePassword.concat("*") });
   };
 
-  updateSuccessTimes = num => {
+  updateSuccessTimes = (num) => {
     this.props.updateSuccessTimes(num);
   };
 
-  updateFailTimes = num => {
+  updateFailTimes = (num) => {
     this.props.updateFailTimes(num);
   };
 
   showPass = () => {
-    this.setState((prevState) => ({ visible: !prevState.visible }))
+    this.setState((prevState) => ({ visible: !prevState.visible }));
   };
 
   render() {
-    // console.log(this.state);
     return (
       <Card centered={true}>
         <Card.Content>
@@ -140,8 +142,8 @@ class Test extends React.Component {
               <Modal.Description>
                 <Header as="h4">
                   Intructions: Enter your {this.props.type} pasword. Click
-                  "Done" to submit your password. You have 3 trys
-                  to enter the correct password
+                  "Done" to submit your password. You have 3 trys to enter the
+                  correct password
                 </Header>
               </Modal.Description>
               <Divider hidden />
@@ -154,12 +156,16 @@ class Test extends React.Component {
               <Modal.Description>
                 <Header as="h4">
                   You entered:{" "}
-                  <Header as="h1">{this.state.visible ? parse(this.state.testPassword) : this.state.hidePassword}</Header>
+                  <Header as="h1">
+                    {this.state.visible
+                      ? parse(this.state.testPassword)
+                      : this.state.hidePassword}
+                  </Header>
                 </Header>
                 <Button
-                  content={this.state.visible ? 'Hide' : 'Show'}
-                  onClick={this.showPass}>
-                </Button>
+                  content={this.state.visible ? "Hide" : "Show"}
+                  onClick={this.showPass}
+                ></Button>
               </Modal.Description>
               <Divider hidden />
               <Grid>

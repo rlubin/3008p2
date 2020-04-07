@@ -1,3 +1,10 @@
+/**
+ * this creates an box with a button that when clicked opens a modal
+ * the modal displays the password scheme as well as the password for its account
+ * the modal allows you to practice the password
+ * this file contains logic for password verification
+ */
+
 import React from "react";
 import parse from "html-react-parser";
 import "./App.css";
@@ -9,7 +16,7 @@ import {
   Grid,
   Message,
   Divider,
-  Transition
+  Transition,
 } from "semantic-ui-react";
 
 class Create extends React.Component {
@@ -43,11 +50,11 @@ class Create extends React.Component {
         "&#x1F615;",
         "&#x1F616;",
         "&#x1F911;",
-        "&#x1F618;"
+        "&#x1F618;",
       ],
       testPassword: "",
       correctPassword: false,
-      incorrectPassword: false
+      incorrectPassword: false,
     };
   }
 
@@ -74,12 +81,11 @@ class Create extends React.Component {
     }
   };
 
-  inputPassword = input => {
+  inputPassword = (input) => {
     this.setState({ testPassword: this.state.testPassword.concat(input) });
   };
 
   render() {
-    // console.log(this.state);
     return (
       <Card centered={true}>
         <Card.Content>

@@ -1,3 +1,10 @@
+/**
+ * this file contains the code that is the homepage of the website
+ * the app uses Create.js and Test.js componenets to add those boxes to the screen
+ * this file keeps track of the passwords, successful and failed attempts and username
+ * when a participant completes all of the create and test password steps it sends a log info back to the server
+ */
+
 import React from "react";
 import "./App.css";
 import { Grid, Header } from "semantic-ui-react";
@@ -9,25 +16,27 @@ class App extends React.Component {
     super(props);
     this.state = {
       userid: this.createUserid(),
-      passwords:[["Banking",this.createPassword()],["Email",this.createPassword()],["Shopping",this.createPassword()]],
+      passwords: [
+        ["Banking", this.createPassword()],
+        ["Email", this.createPassword()],
+        ["Shopping", this.createPassword()],
+      ],
       order: this.shuffleOrder(),
       progress: [false, true, true, true, true, true],
       successTimes: [],
-      failTimes: []
+      failTimes: [],
     };
   }
-
-
 
   createUserid = () => {
     return "fgu" + (Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000);
   };
 
   shuffleOrder = () => {
-    let order = [0, 1, 2]
+    let order = [0, 1, 2];
     for (let i = order.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [order[i], order[j]] = [order[j], order[i]];
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
     }
     return order;
   };
@@ -59,7 +68,7 @@ class App extends React.Component {
       "&#x1F615;",
       "&#x1F616;",
       "&#x1F911;",
-      "&#x1F618;"
+      "&#x1F618;",
     ];
     for (let i = 0; i < 5; i++) {
       password = password.concat(
@@ -101,25 +110,29 @@ class App extends React.Component {
     let data = {
       userid: this.state.userid,
       successTimes: this.state.successTimes,
-      failTimes: this.state.failTimes
+      failTimes: this.state.failTimes,
     };
     console.log("data:\n", data);
-    fetch("http://localhost:8080/log", {
+    fetch("https://comp3008-w20.scs.carleton.ca/comp3008_47/log", {
+      // fetch("http://localhost:8000/log", {
       method: "POST",
       mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    }).then(res => {
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(data),
+    }).then((res) => {
       console.log(res);
     });
   };
 
-  updateSuccessTimes = time => {
+  updateSuccessTimes = (time) => {
     let newSuccessTimes = [...this.state.successTimes, time];
     this.setState({ successTimes: newSuccessTimes });
   };
 
-  updateFailTimes = time => {
+  updateFailTimes = (time) => {
     let newFailTimes = [...this.state.failTimes, time];
     this.setState({ failTimes: newFailTimes });
   };
@@ -154,7 +167,7 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Test /////////////////////////////////////////TEST
+              <Test
                 type={this.state.passwords[this.state.order[0]][0]}
                 disabled={this.state.progress[3]}
                 password={this.state.passwords[this.state.order[0]][1]}
@@ -174,7 +187,7 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Test /////////////////////////////////////////TEST
+              <Test
                 type={this.state.passwords[this.state.order[1]][0]}
                 disabled={this.state.progress[4]}
                 password={this.state.passwords[this.state.order[1]][1]}
@@ -194,7 +207,7 @@ class App extends React.Component {
               ></Create>
             </Grid.Column>
             <Grid.Column>
-              <Test /////////////////////////////////////////TEST
+              <Test
                 type={this.state.passwords[this.state.order[2]][0]}
                 disabled={this.state.progress[5]}
                 password={this.state.passwords[this.state.order[2]][1]}
