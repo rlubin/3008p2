@@ -131,9 +131,9 @@ class Test extends React.Component {
             <Modal.Content>
               <Modal.Description>
                 <Header as="h4">
-                  Intructions: Click the icons below in the order shown above. Click
-                  "Done" to submit you password. You have 3 trys
-                  to enter the correct pass word
+                  Intructions: Enter your {this.props.type} pasword. Click
+                  "Done" to submit your password. You have 3 trys
+                  to enter the correct password
                 </Header>
               </Modal.Description>
               <Divider hidden />

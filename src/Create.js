@@ -100,7 +100,7 @@ class Create extends React.Component {
             <Modal.Content>
               <Modal.Description>
                 <Header as="h4">
-                  You password is:{" "}
+                  Your password is:{" "}
                   <Header as="h1">{parse(this.state.password)}</Header>
                 </Header>
               </Modal.Description>
