@@ -52,7 +52,9 @@ class Test extends React.Component {
       pass: false,
       fail: false,
       startTime: "",
-      endTime: ""
+      endTime: "",
+      visible: false,
+      hidePassword: ""
     };
   }
 
@@ -90,6 +92,7 @@ class Test extends React.Component {
     } else {
       this.setState({ incorrectPassword: true });
       this.setState({ testPassword: "" });
+      this.setState({ hidePassword: "" });
       this.updateFailTimes(
         ((Date.now() - this.state.startTime) / 1000).toFixed(0)
       );
@@ -99,6 +102,7 @@ class Test extends React.Component {
 
   inputPassword = input => {
     this.setState({ testPassword: this.state.testPassword.concat(input) });
+    this.setState({ hidePassword: this.state.hidePassword.concat("*") });
   };
 
   updateSuccessTimes = num => {
@@ -107,6 +111,10 @@ class Test extends React.Component {
 
   updateFailTimes = num => {
     this.props.updateFailTimes(num);
+  };
+
+  showPass = () => {
+    this.setState((prevState) => ({ visible: !prevState.visible }))
   };
 
   render() {
@@ -146,8 +154,12 @@ class Test extends React.Component {
               <Modal.Description>
                 <Header as="h4">
                   You entered:{" "}
-                  <Header as="h1">{parse(this.state.testPassword)}</Header>
+                  <Header as="h1">{this.state.visible ? parse(this.state.testPassword) : this.state.hidePassword}</Header>
                 </Header>
+                <Button
+                  content={this.state.visible ? 'Hide' : 'Show'}
+                  onClick={this.showPass}>
+                </Button>
               </Modal.Description>
               <Divider hidden />
               <Grid>
